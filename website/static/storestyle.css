@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+.body{
+    padding: 0;
+    margin: 0;
+    float: left;
+    
+}
+.logo{
+    height: 90px;
+    width: 90px;
+    position: relative;
+    left: 60px;
+}
+.heading{
+    float: right;
+    position: relative;
+    right: 30px;
+}
+.nav-item{
+    float: left;
+}
+.container-fluid{
+    background: radial-gradient(#fff,#ffd6d6);
+    position: relative;
+    top: 82px;
+}
+.container-fluid .row{
+    
+    height: 300px;
+    
+}
+.container-fluid .col-6{
+    
+    justify-content: center;
+    
+}
+.container-fluid .main{
+    width: 60%;
+    height: 80%;
+    
+}
+.first-row{
+    
+    position: relative;
+    top: 120px;
+}
+
+.second-heading .img{
+    
+    height: 100%;
+    width: 350px;
+}
+.second-heading .img-text{
+    position: relative;
+    top: -50%;
+    visibility: hidden;
+}
+
+.second-heading .col-md-4:hover .img{
+    
+    opacity: 0.4;
+    transform: translateY(-20px);
+    transition: transform 0.8s;
+
+}
+.container .col-md-4:hover .img-text{
+
+    visibility: visible;
+    transform: translateY(-20px);
+    transition: transform 0.8s;
+}
+
+.product-img{
+    max-height: 200px;
+    max-width: 200px;
+}
+
+.products .container .row .col-md-4{
+    padding: 15px;
+
+
+}
+.products .container .row .col-md-4 .inside-box{
+    min-height: 350px;
+    border-radius: 15px;
+}
+.products .container .row .col-md-4 .inside-box .buttons{
+    position: absolute;
+    right: 33%;
+    bottom: 10%;
+
+
+}
+
+/*.horizontal-scrollable > .row{
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+
+}
+.horizontal-scrollable > .row > .col-md-4{
+    display: inline-block;
+}*/
+#btn-back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+}
+.ui-autocomplete {
+    max-height: 100px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+    position: relative;
+    z-index: 2000;
+    background-color: floralwhite;
+    width: 200px;
+    list-style: none;
+  }
+  /* IE 6 doesn't support max-height
+   * we use height instead, but this forces the menu to always be this tall
+   */
+  /** html .ui-autocomplete {
+    height: 100px;
+  }*/

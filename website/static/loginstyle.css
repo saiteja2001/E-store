@@ -1,0 +1,12 @@
+body{
+	background-image: url("/static/images/login.jpeg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+  	background-size: cover;
+}
+
+form{
+	position: relative;
+	top: 90px;
+	color: white;
+}

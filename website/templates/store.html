@@ -1,0 +1,340 @@
+<<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8 ">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>E-Store| Ecommerse website design</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+
+    <link rel="stylesheet" href="/static/storestyle.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet"> 
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!----jquery---->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+</head>
+<body>
+    <!----heading----->
+    
+    <div class="navbar fixed-top nabar-light bg-light">
+        <img class="logo" src="/static/e-images/logo.jpg">
+        <div class="title">
+            <h3>E-Store <h3>
+            {% if user !=None %}
+                <h3>Welcome {{user[0]}}</h3>
+            {% endif %}
+        </div>
+        <div class="heading">
+                <div class="nav-item form-outline">
+                    <div class="row ui-widget">
+                    <input id="search-input" type="search" class="form-control col-8" placeholder="Search" />
+                    <button id="search-button" type="button" class="btn btn-primary col-2" >
+                        <i class="fas fa-search"></i>
+                    </button>
+                    </div>
+                </div>
+                
+
+                <a class="nav-item nav-link" href="/">Home</a>
+            {% if user!=None %}
+                <a class="nav-item nav-link" href="/orders">Orders</a>
+                <a class="nav-item nav-link" href="/logout">Logout</a>
+            {% else %}
+                <a class="nav-item nav-link" href="/login">Login</a>
+                <a class="nav-item nav-link" href="/sigh-up">Sigh up</a>
+            {% endif %}
+            
+            
+            
+        </div>
+    </div>
+    
+
+    <!-----display1------>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6 d-flex justify-content-center align-items-center">
+                <div>
+                    <h3>Explore our new technology</h3>
+                    <h6>Technology is best when it brings people together</h6>
+                </div>
+            </div>
+            <div class="col-6 d-flex justify-content-center align-items-center">
+                <img class="main" src="/static/e-images/main2.png"> 
+            </div>
+            
+        </div>
+    </div>
+
+    <!------body----->
+    <div class="container first-row second-heading">
+        <div class="row">
+            <div type="button" id="Mobiles" tabindex="1" class="col-md-4">
+                <img class="img" src="/static/e-images/category-1.jpg">
+                <h4 class="img-text d-flex justify-content-center align-items-center">Phones</h4>
+            </div>
+            <div type="button" id="Laptops" tabindex="1" class="col-md-4">
+                <img  class="img" src="/static/e-images/category-2.jpg">
+                <h4 class="img-text d-flex justify-content-center align-items-center">Laptops</h4>
+            </div>
+            <div type="button" id="Tablets" tabindex='1' class="col-md-4">
+                <img class="img" src="/static/e-images/category-3.jpg">
+                <h4 class="img-text d-flex justify-content-center align-items-center">Tablets</h4>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <br>
+    <br>
+    <br>
+    <!----mobile phones---->
+    <div id="mobiles-list" tabindex="1" class=" category d-flex justify-content-center align-items-center">
+        <h4>Mobile Phones</h4>
+        
+    </div>
+    <br>
+    <form class="mobiles products" method="post">
+        <div class="container horizontal-scrollable">
+            <div class="row">
+                {% for i in lists %}
+                {% if i[1] == "mobile" %}
+                <div class="col-md-4">
+                <div class="inside-box text-center border border-primary">
+                    <img  class="product-img" src="{{i[5]}}}">
+                    
+                    <p><i class="fas fa-star"></i>{{i[3]}}</p>
+                    <h4>{{i[4]}}</h4>
+                    <p><i class="fas fa-rupee-sign"></i>{{i[6]}}</p>
+                    
+                    <div class="buttons">
+                    <button class="btn btn-primary" type="submit" name="buy" value={{i[0]}}>Buy</button>
+
+                    <!-- Trigger the modal with a button -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal{{i[0]}}" >Details</button>
+                    </div>                  
+                </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                
+            </div>
+        </div>
+    </form>
+    
+    <br>
+    <!----laptops---->
+    <div id="laptops-list" tabindex="1" class="category d-flex justify-content-center align-items-center">
+        <h4>Laptops</h4>
+    </div>
+        <br>
+    <form class="laptops products" method="post">
+        <div class="container">
+            <div class="row">
+                {% for i in lists %}
+                {% if i[1] == "laptop" %}
+                <div class="col-md-4">
+                <div class="inside-box text-center border border-primary">
+                    <img class="product-img" src="{{i[5]}}">
+                    <p><i class="fas fa-star"></i>{{i[3]}}</p>
+                    <h5>{{i[4]}}<h5>
+                    <p><i class="fas fa-rupee-sign"></i>{{i[6]}}</p>
+                    <div class="buttons">
+                    <button class="btn btn-primary" type="submit" name="buy" value={{i[0]}}>Buy</button>
+
+                    <!-- Trigger the modal with a button -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal{{i[0]}}" >Details</button>
+                    </div>
+                </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                
+            </div>
+        </div>
+    </form>
+    
+    <br>
+    <!----Tablets---->
+    <div id="tablets-list" tabindex="1" class=" category d-flex justify-content-center align-items-center">
+        <h4>Tablets</h4>
+        
+    </div>
+    <br>
+    <form class="tablets products" method="post">
+        <div class="container">
+            <div class="row">
+                {% for i in lists %}
+                {% if i[1] == "tablet" %}
+                <div class="col-md-4">
+                <div class="inside-box text-center border border-primary">
+                    <img class="product-img" src="{{i[5]}}">
+                    <p><i class="fas fa-star"></i>{{i[3]}}</p>
+                    <h5>{{i[4]}}<h5>
+
+                    <p><i class="fas fa-rupee-sign"></i>{{i[6]}}</p>
+                    <div class="buttons">
+                    <button class="btn btn-primary" type="submit" name="buy" value={{i[0]}}>Buy</button>
+                    <!-- Trigger the modal with a button -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal{{i[0]}}" >Details</button>
+                    </div>
+                </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                
+            </div>
+        </div>
+    </form>
+    <button
+        type="button"
+        class="btn btn-danger btn-floating btn-lg"
+        id="btn-back-to-top"
+        >
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    {% for i in lists %}
+    <!-- Modal -->
+    <form id="myModal{{i[0]|tojson}}" class="modal fade" role="dialog" method="post">
+        <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="title">Order Details</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                
+            </div>
+            <div class="modal-body">
+                <img src="{{i[5]}}">
+                <p><i class="fas fa-star"></i>{{i[3]}}</p>
+                <h5>{{i[4]}}<h5>
+                <p><i class="fas fa-rupee-sign"></i>{{i[6]}}</p>
+                <p>RAM : {{i[7]}}</p>
+                {% set list1 = i[8].split(', ') %}
+                {% for j in list1 %}
+                    <p>{{j}}</p>
+                {% endfor %}
+                
+                <!-- <button class="btn btn-primary" type="submit" name="buy" value={{i[0]}}>Buy</button> -->
+                <!-- Button trigger modal -->
+                
+            </div>
+            
+            <div class="modal-footer">
+                <button type="submit" id="mobile-buy" class="btn btn-primary" name="buy" value = {{i[0]}}>
+                  Buy
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                
+            </div>
+        </div>
+
+      </div>
+    </form>
+    {% endfor %}
+
+
+    <script type="text/javascript">
+        $('#Tablets').click(function() {
+          $("#tablets-list").focus();
+        });
+        $('#Laptops').click(function(){
+            $('#laptops-list').focus();
+        })
+        $('#Mobiles').click(function(){
+            $('#mobiles-list').focus();
+        })
+
+        var x={}
+        const mobile_list =[]
+        
+        {% for i in lists %}
+            x[{{ i[4]|tojson }}]={{ i[0]|tojson }};
+            mobile_list.push({{ i[4]|tojson }});
+            
+        {% endfor %}
+        
+        $('#search-button').click(function(){
+            var a=$("#search-input").val();
+
+            var y={{ lists[1][0]|tojson }};
+            if(a in x){
+                var b="#myModal"+x[a];
+                // $(this).attr("data-target",b);
+                $(b).modal('show');
+            }else if( a.length==0 ){
+                alert("Please enter a name to search!");
+            }else{
+                alert(a+" Not found");
+            }
+            
+        })
+
+        let mybutton = document.getElementById("btn-back-to-top");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+          scrollFunction();
+        };
+
+        function scrollFunction() {
+          if (
+            document.body.scrollTop > 20 ||
+            document.documentElement.scrollTop > 20
+          ) {
+            mybutton.style.display = "block";
+          } else {
+            mybutton.style.display = "none";
+          }
+        }
+        // When the user clicks on the button, scroll to the top of the document
+        mybutton.addEventListener("click", backToTop);
+
+        function backToTop() {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+        }
+
+        var availableTags = [
+            "ActionScript",         "AppleScript",
+            "Asp",              "BASIC",
+            "C",                "C++",
+            "Clojure",              "COBOL",
+            "ColdFusion",           "Erlang",
+            "Fortran",              "Groovy",
+            "Haskell",              "Java",
+            "JavaScript",           "Lisp",
+            "Perl",             "PHP",
+            "Python",               "Ruby",
+            "Scala",                "Scheme"
+        ];
+        $( "#search-input" ).autocomplete({
+                source: mobile_list
+            });
+    </script>
+    </script>
+
+        
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    
+</body>
+</html>
